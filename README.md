@@ -2,7 +2,7 @@
 
 ## Terraform
 
-The GRACE development team will use the [Terraform Best Practices](https://www.terraform-best-practices.com/) GitBook by [Anton Babenko](https://github.com/antonbabenko) as a style guide for GRACE Terraform code.  The team will document additional clarification, modifications, deviations and addendums to the guide in this repository.
+The GRACE development team will use the [**_Terraform Best Practices_**](https://www.terraform-best-practices.com/) GitBook by [Anton Babenko](https://github.com/antonbabenko) as a style guide for GRACE Terraform code.  The team will document additional clarification, modifications, deviations and addendums to the guide in this repository.
 
 ### References for Terraform Style Guides
 
@@ -20,13 +20,13 @@ The GRACE development team will use the [Terraform Best Practices](https://www.t
 
 ## Go
 
-GRACE was using the `[gometalinter](https://github.com/alecthomas/gometalinter)` to enforce community recommended style guidelines on Go code.  However, the `gometalinter` project has been deprecated in favor of `[golangci-lint](https://github.com/golangci/golangci-lint)` and GRACE will be migrating to this linter instead.
+GRACE was using the [`gometalinter`](https://github.com/alecthomas/gometalinter) to enforce community recommended style guidelines on Go code.  However, the `gometalinter` project has been deprecated in favor of [`golangci-lint`](https://github.com/golangci/golangci-lint) and GRACE will be migrating to this linter instead.
 
 ## AWS Resource Naming
 
 ### IAM
 
-There is a draft [*GRACE IAM Naming Standard*](https://docs.google.com/document/d/1XWOmYadQg4ya4saVc3IeupfObGmmD6Bqb0nV702ZwGA) in Google Docs.
+There is a draft [**_GRACE IAM Naming Standard_**](https://docs.google.com/document/d/1XWOmYadQg4ya4saVc3IeupfObGmmD6Bqb0nV702ZwGA) in Google Docs.
 
 ## Public domain
 
