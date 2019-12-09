@@ -6,6 +6,7 @@
     - [Linter](#linter)
     - [Testing](#testing)
     - [Mocking](#mocking)
+    - [Assertions](#assertions)
     - [Code Coverage](#code-coverage)
 1. [Terraform](#terraform)
 1. [References for Terraform Style Guides](#references-for-terraform-style-guides)
@@ -25,18 +26,16 @@ GRACE was using the [`gometalinter`](https://github.com/alecthomas/gometalinter)
 3. Use assertions instead of if statements, where possible (See [Figure 2](#Figure-2)).
 4. Use sub-tests to differentiate error messages when using assertions. This will make debugging easier.
 5. Test cases should cover both the Happy path and the Unhappy path (See [Happy Path vs Unhappy Path](https://hiptest.com/blog/testing/happy-unhappy-paths-why-you-need-to-test-both/)).
-6. Generally find a balance between DRY and DAMP testing patterns to improve readibility of individual tests while keeping repeated code highly managable (See example).
 
 ### Mocking
 
 1. Use native go interfaces when feasible (See [Figure 3](#Figure-3)).
-1. Use 
 1. Use GoMock when go interfaces alone are not sufficient (See [Figure 5](#Figure-5)).
+6. Find a balance between [DAMP](https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) mocking patterns to improve readability of individual tests while keeping repeated code highly managable (See [Figure-4](#Figure-4)).
 
 ### Assertions
 
-1. Use [stretchr/testify](https://godoc.org/github.com/stretchr/testify/assert) as the testing framework
-1. 
+1. Use [stretchr/testify](https://godoc.org/github.com/stretchr/testify/assert) as the assertion framework.
 
 ### Code Coverage
 
