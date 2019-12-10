@@ -175,7 +175,7 @@ func TestGetSound(t *testing.T) {
 
 #### main_test.go
 
-```
+```Go
 type MockDog struct {
 	dog.IDog
 	state interface{}
