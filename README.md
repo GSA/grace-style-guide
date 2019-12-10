@@ -175,6 +175,7 @@ func TestGetSound(t *testing.T) {
 
 #### main_test.go
 
+```
 type MockDog struct {
 	dog.IDog
 	state interface{}
@@ -231,6 +232,7 @@ func TestYap(t *testing.T) {
 	actual := sound(md)
 	assert.Equal(t, expected, actual)
 }
+```
 
 [[top](#grace-style-guide)] [[back](#general-testing)]
 
