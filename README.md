@@ -30,8 +30,8 @@ GRACE was using the [`gometalinter`](https://github.com/alecthomas/gometalinter)
 ### Mocking
 
 1. Use native go interfaces when feasible (See [Figure 3](#Figure-3)).
-1. Use GoMock when go interfaces alone are not sufficient (See [Figure 5](#Figure-5)).
-6. Find a balance between [DAMP](https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) mocking patterns to improve readability of individual tests while keeping repeated code highly managable (See [Figure-4](#Figure-4)).
+2. Use GoMock when go interfaces alone are not sufficient (See [Figure 5](#Figure-5)).
+3. Find a balance between [DAMP](https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html) and [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) mocking patterns to improve readability of individual tests while keeping repeated code highly managable (See [Figure-4](#Figure-4)).
 
 ### Assertions
 
@@ -171,8 +171,68 @@ func TestGetSound(t *testing.T) {
 
 [[top](#grace-style-guide)] [[back](#general-testing)]
 
+### Figure 4
 
+#### main_test.go
 
+type MockDog struct {
+	dog.IDog
+	state interface{}
+}
+
+func (m *MockDog) Bark() string {
+	// In the event that Bark() is called by many methods
+	// within the production code, we should abstract
+	// the mocked Bark() behaviour by allowing each
+	// test case to implement custom behavior.
+
+	// If multiple test cases use some default behavior
+	// it might be wise to create a single function whose
+	// behavior is consumed by the mocks
+	tester, ok := m.state.(dog.IDog)
+	if !ok {
+		return ""
+	}
+	return tester.Bark()
+}
+
+type yipTestCase struct {
+	dog.IDog
+	bark string
+}
+
+func (y *yipTestCase) Bark() string {
+	return strings.ToLower(y.bark)
+}
+
+func TestYip(t *testing.T) {
+	s := yipTestCase{bark: "yip!"}
+	expected := "yip!"
+	md := &MockDog{state: &s}
+	actual := sound(md)
+	assert.Equal(t, expected, actual)
+}
+
+type yapTestCase struct {
+	dog.IDog
+	bark string
+}
+
+func (y *yapTestCase) Bark() string {
+	// yapTestCase.Bark() implements different functionality
+	// in order to satisfy its particular test case needs
+	return strings.ToUpper(y.bark)
+}
+
+func TestYap(t *testing.T) {
+	s := yapTestCase{bark: "yap!"}
+	expected := "YAP!"
+	md := &MockDog{state: &s}
+	actual := sound(md)
+	assert.Equal(t, expected, actual)
+}
+
+[[top](#grace-style-guide)] [[back](#general-testing)]
 
 ### Figure 5
 
